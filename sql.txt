@@ -1,0 +1,43 @@
+create table repos
+(
+    id serial primary key,
+    name varchar
+);
+
+create table developers(
+    id serial primary key,
+    user_name varchar,
+    contributions integer,
+    avatar_url varchar,
+    html_url varchar,
+    repo_id integer references repos(id)
+);
+
+create table issues(
+    id serial primary key,
+    title varchar,
+    description varchar ,
+    state varchar ,
+    start_time timestamp ,
+    solve_time timestamp ,
+    repo_id integer references repos(id)
+);
+
+create table comments(
+    comment varchar,
+    issues_id integer references issues(id)
+);
+create table release(
+    id integer,
+    publish_time timestamp,
+    next_publish timestamp,
+    repo_id integer references repos(id),
+    primary key (id,repo_id)
+);
+
+create table  commit(
+    id serial primary key ,
+    commit_time timestamp,
+    release_id integer,
+    repo_id integer references repos(id)
+);
