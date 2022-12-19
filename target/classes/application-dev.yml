@@ -1,0 +1,32 @@
+server:
+  port: 8084
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/java2-pro
+      username: postgres
+      password: hzr011202
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+
+
+mybatis:
+  type-aliases-package:  com.example.springproject.domain
+#  configuration:
+#    map-underscore-to-camel-case: true
+
+
+# showsql
+logging:
+  level:
+    com:
+      sustech: debug
