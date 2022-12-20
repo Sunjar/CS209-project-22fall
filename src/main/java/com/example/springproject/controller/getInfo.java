@@ -30,23 +30,23 @@ public class getInfo {
         return getInfoServices.gerDevelopers(id);
     }
 
-    @GetMapping("info/developers/{id}/issues/state")
+    @GetMapping("info/{id}/issues/state")
     public List<issueState> gerIssuesNum(@PathVariable int id){
         return getInfoServices.gerIssuesNum(id);
     }
 
 
-    @GetMapping("info/info/developers/{id}/issues/analysis")
+    @GetMapping("info/info/{id}/issues/analysis")
     public List<issueAnalyse> gerIssuesAnalysis(@PathVariable int id){
         return getInfoServices.gerIssuesAnalysis(id);
     }
 
-    @GetMapping("info/developers/{id}/release")
+    @GetMapping("info/{id}/release")
     public int getReleaseNum(@PathVariable int id){
         return getInfoServices.getReleaseNum(id);
     }
 
-    @GetMapping("info/developers/{id}/getCommitByRelease")
+    @GetMapping("info/{id}/getCommitByRelease")
     public List<Integer> getCommitByRelease(@PathVariable int id){
         return getInfoServices.getCommitByRelease(id);
     }
@@ -56,9 +56,11 @@ public class getInfo {
         return getInfoServices.getAllCommit();
     }
 
-    @GetMapping("info/developers/{id}/getCommitByHour")
+    @GetMapping("info/{id}/getCommitByHour")
     public List<commitHour> getCommitByHourRelease(@PathVariable int id){
         return getInfoServices.getCommitByHourRelease(id);
     }
+
+
 
 }

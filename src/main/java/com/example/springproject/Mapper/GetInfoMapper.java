@@ -13,7 +13,7 @@ public interface GetInfoMapper {
     @Select("select * from repos")
     public List<repos> getAllRepos();
 
-    @Select("select * from developers where id = #{id} order by contributions limit 5")
+    @Select("select * from developers where repo_id = #{id} order by contributions desc limit 5")
     public  List<developers> gerDevelopers(int id);
 
     @Select("select * from commit")
