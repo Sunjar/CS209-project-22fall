@@ -21,7 +21,13 @@ public interface GetInfoMapper {
 
     @Select("select state,count(state) as issue_num from issues where repo_id = #{id} group by state")
     public List<issueState> getIssueNum(int id);
-    @Select("select avg(solve_time-start_time) as avg,(max(solve_time-start_time)-min(solve_time-start_time)) as extremum from issues where repo_id = #{id} and state = 'closed';")
+    @Select("select avg(date_part('day',cast(solve_time as TIMESTAMP)-cast(start_time as TIMESTAMP))) as avg,\n" +
+            "       (max(date_part('day',cast(solve_time as TIMESTAMP)-cast(start_time as TIMESTAMP)))\n" +
+            "            -min(date_part('day',cast(solve_time as TIMESTAMP)-cast(start_time as TIMESTAMP)))) as extremum,\n" +
+            "       max(date_part('day',cast(solve_time as TIMESTAMP)-cast(start_time as TIMESTAMP))) as max,\n" +
+            "       min(date_part('day',cast(solve_time as TIMESTAMP)-cast(start_time as TIMESTAMP))) as min,\n" +
+            "       variance(date_part('day',cast(solve_time as TIMESTAMP)-cast(start_time as TIMESTAMP))) as variance,\n" +
+            "       stddev(date_part('day',cast(solve_time as TIMESTAMP)-cast(start_time as TIMESTAMP))) as stedev from issues where repo_id = 1 and state = 'closed'")
     public List<issueAnalyse> gerIssuesAnalysis(int id);
 
     @Select("select count(id) from release where repo_id = #{id}")
