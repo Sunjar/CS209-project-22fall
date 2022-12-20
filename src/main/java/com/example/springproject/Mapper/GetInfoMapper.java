@@ -43,4 +43,16 @@ public interface GetInfoMapper {
             "from commit\n" +
             "where repo_id = #{id}  group by data order by data")
     public List<commitByDay> getCommitByDay(int id);
+
+    @Select("SELECT * FROM issues where position((select name from repos where id = #{{id}) in title)!=0 and repo_id = #{id};")
+    public List<issues> getTitleAnalysis(int id);
+
+    @Select("SELECT * FROM issues where position((select name from repos where id = #{{id}) in title)!=0 and issues_id = #{issue_id};")
+    public List<comments> getCommentAnalysis(int id, int issue_id);
+
+    @Select("select * from issues where repo_id = #{id}")
+    public List<issues> getAllIssues(int id);
+
+    @Select("select * from comments where issues_id = #{issues_id}")
+    public List<comments> getAllComment(int issues_id);
 }

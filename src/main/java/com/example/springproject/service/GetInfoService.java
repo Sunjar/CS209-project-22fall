@@ -10,11 +10,11 @@ public interface GetInfoService {
 
     public List<commit> getAllCommit();
 
-    public List<developers> gerDevelopers(int id);
+    public List<developers> getDevelopers(int id);
 
-    public List<issueState> gerIssuesNum(int id);
+    public List<issueState> getIssuesNum(int id);
 
-    public List<issueAnalyse> gerIssuesAnalysis(int id);
+    public List<issueAnalyse> getIssuesAnalysis(int id);
 
     public int getReleaseNum(int id);
 
@@ -23,4 +23,12 @@ public interface GetInfoService {
     public List<commitHour> getCommitByHourRelease(int id);
 
     public List<commitByDay> getCommitByDay(int id);
+
+    public List<issues> getTitleAnalysis(int id);
+
+    public List<comments> getCommentAnalysis(int id, int issue_id);
+
+    public List<issues> getAllIssues(int id);
+
+    public List<comments> getAllComment(int issues_id);
 }

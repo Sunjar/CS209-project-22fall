@@ -26,19 +26,38 @@ public class getInfo {
     }
 
     @GetMapping("info/{id}/developers")
-    public List<developers> gerDevelopers(@PathVariable int id){
-        return getInfoServices.gerDevelopers(id);
+    public List<developers> getDevelopers(@PathVariable int id){
+        return getInfoServices.getDevelopers(id);
+    }
+
+    @GetMapping("info/{id}/issues")
+    public List<issues> getAllIssues(@PathVariable int id){
+        return getInfoServices.getAllIssues(id);
     }
 
     @GetMapping("info/{id}/issues/state")
-    public List<issueState> gerIssuesNum(@PathVariable int id){
-        return getInfoServices.gerIssuesNum(id);
+    public List<issueState> getIssuesNum(@PathVariable int id){
+        return getInfoServices.getIssuesNum(id);
     }
 
-
     @GetMapping("info/info/{id}/issues/analysis")
-    public List<issueAnalyse> gerIssuesAnalysis(@PathVariable int id){
-        return getInfoServices.gerIssuesAnalysis(id);
+    public List<issueAnalyse> getIssuesAnalysis(@PathVariable int id){
+        return getInfoServices.getIssuesAnalysis(id);
+    }
+
+    @GetMapping("info/info/{id}/issues/titleAnalysis")
+    public List<issues> getTitleAnalysis(@PathVariable int id){
+        return getInfoServices.getTitleAnalysis(id);
+    }
+
+    @GetMapping("info/info/{id}/issues/{issues_id}/comment")
+    public List<comments> getAllComment(@PathVariable int id,@PathVariable int issues_id){
+        return getInfoServices.getAllComment(issues_id);
+    }
+
+    @GetMapping("info/info/{id}/issues/{issues_id}/commentAnalysis")
+    public List<comments> getCommentAnalysis(@PathVariable int id,@PathVariable int issues_id){
+        return getInfoServices.getCommentAnalysis(id,issues_id);
     }
 
     @GetMapping("info/{id}/release")

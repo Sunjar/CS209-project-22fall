@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class commitByDay {
-    private String data;
-    private int commitNum;
+public class comments {
+    private String comment;
+    private int issues_id;
 }

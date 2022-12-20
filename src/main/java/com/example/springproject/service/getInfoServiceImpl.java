@@ -37,19 +37,19 @@ public class getInfoServiceImpl implements GetInfoService {
     }
 
     @Override
-    public List<developers> gerDevelopers(int id) {
+    public List<developers> getDevelopers(int id) {
         return getInfoMapper.gerDevelopers(id);
     }
 
     @Override
-    public List<issueState> gerIssuesNum(int id) {
+    public List<issueState> getIssuesNum(int id) {
 
 
         return getInfoMapper.getIssueNum(id);
     }
 
     @Override
-    public List<issueAnalyse> gerIssuesAnalysis(int id) {
+    public List<issueAnalyse> getIssuesAnalysis(int id) {
         return getInfoMapper.gerIssuesAnalysis(id);
     }
 
@@ -80,5 +80,25 @@ public class getInfoServiceImpl implements GetInfoService {
     @Override
     public List<commitByDay> getCommitByDay(int id) {
         return getInfoMapper.getCommitByDay(id);
+    }
+
+    @Override
+    public List<issues> getTitleAnalysis(int id) {
+        return getInfoMapper.getTitleAnalysis(id);
+    }
+
+    @Override
+    public List<comments> getCommentAnalysis(int id, int issue_id) {
+        return getInfoMapper.getCommentAnalysis(id, issue_id);
+    }
+
+    @Override
+    public List<issues> getAllIssues(int id) {
+        return getInfoMapper.getAllIssues(id);
+    }
+
+    @Override
+    public List<comments> getAllComment(int issues_id) {
+        return getInfoMapper.getAllComment(issues_id);
     }
 }
