@@ -61,6 +61,9 @@ public class getInfo {
         return getInfoServices.getCommitByHourRelease(id);
     }
 
-
+    @GetMapping("info/{id}/getCommitByDay")
+    public List<commitByDay> getCommitByDay(@PathVariable int id){
+        return getInfoServices.getCommitByDay(id);
+    }
 
 }

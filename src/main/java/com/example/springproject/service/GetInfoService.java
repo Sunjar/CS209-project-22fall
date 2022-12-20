@@ -21,4 +21,6 @@ public interface GetInfoService {
     public List<Integer> getCommitByRelease(int id);
 
     public List<commitHour> getCommitByHourRelease(int id);
+
+    public List<commitByDay> getCommitByDay(int id);
 }

@@ -76,4 +76,9 @@ public class getInfoServiceImpl implements GetInfoService {
         }
         return ans;
     }
+
+    @Override
+    public List<commitByDay> getCommitByDay(int id) {
+        return getInfoMapper.getCommitByDay(id);
+    }
 }

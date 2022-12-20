@@ -32,4 +32,9 @@ public interface GetInfoMapper {
 
     @Select("select count(id) from commit where date_part('hour',commit_time)>=#{time} and date_part('hour',commit_time)<(#{time}+6) and repo_id = #{id};")
     public int getCommitByHourRelease(int id,int time);
+
+    @Select("select to_char(commit_time::DATE, 'YYYY-MM-DD') as data, count(id) as commitNum\n" +
+            "from commit\n" +
+            "where repo_id = #{id}  group by day order by day")
+    public List<commitByDay> getCommitByDay(int id);
 }
