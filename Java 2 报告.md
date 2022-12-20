@@ -37,12 +37,17 @@ HttpClient httpClient = HttpClient.newBuilder()
 
 获取不同时间段提交数量：
 
-```
+```java
+@RestController
+@RequestMapping("/repo")
+@CrossOrigin
+@Validated
     @GetMapping("info/{id}/getCommitByHour")
     public List<commitHour> getCommitByHourRelease(@PathVariable int id){
         return getInfoServices.getCommitByHourRelease(id);
     }
 ```
+当检测到有前端访问http:localhost/repo/info/{id}/getCommitByHour时会调用getCommitByHourRelease方法，方法会返回一个经过getInfoServices.getCommitByHourRelease()方法处理过的commitHour类的数组
 
 ```java
 public List<commitHour> getCommitByHourRelease(int id) {
@@ -58,9 +63,11 @@ public List<commitHour> getCommitByHourRelease(int id) {
         return ans;
     }
 ```
+该方法通过调用getInfoMapper.getCommitByHourRelease()接口获取相关时间段内的仓库中提交的数量，并整合为commitHour数组返回。
 
 ```java
     @Select("select count(id) from commit where date_part('hour',commit_time)>=#{time} and date_part('hour',commit_time)<(#{time}+6) and repo_id = #{id};")
     public int getCommitByHourRelease(int id,int time);
 ```
 
+该方法通过注释的方法调用数据库，从而从数据库中获取数据
