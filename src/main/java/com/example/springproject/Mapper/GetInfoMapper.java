@@ -35,6 +35,6 @@ public interface GetInfoMapper {
 
     @Select("select to_char(commit_time::DATE, 'YYYY-MM-DD') as data, count(id) as commitNum\n" +
             "from commit\n" +
-            "where repo_id = #{id}  group by day order by day")
+            "where repo_id = #{id}  group by data order by data")
     public List<commitByDay> getCommitByDay(int id);
 }
