@@ -25,7 +25,7 @@ public class getInfo {
         return getInfoServices.getRepos(id);
     }
 
-    @GetMapping("info/developers/{id}/developers")
+    @GetMapping("info/{id}/developers")
     public List<developers> gerDevelopers(@PathVariable int id){
         return getInfoServices.gerDevelopers(id);
     }

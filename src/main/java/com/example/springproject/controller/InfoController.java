@@ -7,6 +7,7 @@ import com.example.springproject.service.AddInfo;
 import com.example.springproject.service.addInfoImpl;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -15,11 +16,16 @@ import java.net.http.HttpResponse;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
+@RestController
+@CrossOrigin
+@RequestMapping("/add")
 public class InfoController {
+    
+    final String token = "";
 
     @SneakyThrows
-    public void addInfos(String urls) {
+    @PostMapping("/crawler")
+    public void addInfos(@RequestParam("url") String urls) {
         AddInfo addInfo = new addInfoImpl();
         HttpClient httpClient = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
@@ -27,7 +33,7 @@ public class InfoController {
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(urls))
-                .setHeader("Authorization", "token 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")
+                .setHeader("Authorization", token)
                 .build();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         String t = response.body().substring(1, response.body().length() - 1);
@@ -45,7 +51,7 @@ public class InfoController {
             request = HttpRequest.newBuilder()
                     .GET()
                     .uri(URI.create(urlIss))
-                    .setHeader("Authorization", "token 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")
+                    .setHeader("Authorization", token)
                     .build();
             response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             t = response.body().substring(1, response.body().length() - 1);
@@ -80,7 +86,7 @@ public class InfoController {
                 request = HttpRequest.newBuilder()
                         .GET()
                         .uri(URI.create(url))
-                        .setHeader("Authorization", "token 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")
+                        .setHeader("Authorization", token)
                         .build();
                 response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
                 t = response.body().substring(1, response.body().length() - 1);
@@ -99,7 +105,7 @@ public class InfoController {
         request = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(urlDeveloper))
-                .setHeader("Authorization", "token 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")
+                .setHeader("Authorization", token)
                 .build();
         response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         t = response.body().substring(1, response.body().length() - 1);
@@ -116,7 +122,7 @@ public class InfoController {
             request = HttpRequest.newBuilder()
                     .GET()
                     .uri(URI.create(urlRelease))
-                    .setHeader("Authorization", "token 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")
+                    .setHeader("Authorization", token)
                     .build();
             response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             t = response.body().substring(1, response.body().length() - 1);
@@ -160,7 +166,7 @@ public class InfoController {
             request = HttpRequest.newBuilder()
                     .GET()
                     .uri(URI.create(urlCommits))
-                    .setHeader("Authorization", "token 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")
+                    .setHeader("Authorization", token)
                     .build();
             response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             t = response.body().substring(1, response.body().length() - 1);
