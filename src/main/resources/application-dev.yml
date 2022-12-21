@@ -5,9 +5,9 @@ spring:
   datasource:
     druid:
       driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://localhost:5432/java2-pro
+      url: jdbc:postgresql://localhost:5432/java2_pro
       username: postgres
-      password: hzr011202
+      password: 123456
 
   redis:
     host: 127.0.0.1

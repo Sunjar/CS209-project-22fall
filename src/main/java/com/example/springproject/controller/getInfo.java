@@ -40,22 +40,22 @@ public class getInfo {
         return getInfoServices.getIssuesNum(id);
     }
 
-    @GetMapping("info/info/{id}/issues/analysis")
+    @GetMapping("info/{id}/issues/analysis")
     public List<issueAnalyse> getIssuesAnalysis(@PathVariable int id){
         return getInfoServices.getIssuesAnalysis(id);
     }
 
-    @GetMapping("info/info/{id}/issues/titleAnalysis")
+    @GetMapping("info/{id}/issues/titleAnalysis")
     public List<issues> getTitleAnalysis(@PathVariable int id){
         return getInfoServices.getTitleAnalysis(id);
     }
 
-    @GetMapping("info/info/{id}/issues/{issues_id}/comment")
-    public List<comments> getAllComment(@PathVariable int id,@PathVariable int issues_id){
+    @GetMapping("info/issues/{issues_id}/comment")
+    public List<comments> getAllComment(@PathVariable int issues_id){
         return getInfoServices.getAllComment(issues_id);
     }
 
-    @GetMapping("info/info/{id}/issues/{issues_id}/commentAnalysis")
+    @GetMapping("info/{id}/issues/{issues_id}/commentAnalysis")
     public List<comments> getCommentAnalysis(@PathVariable int id,@PathVariable int issues_id){
         return getInfoServices.getCommentAnalysis(id,issues_id);
     }

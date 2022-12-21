@@ -18,7 +18,10 @@ public class SpringprojectApplicationTests {
 	@Test
     void testInsertRepos(){
         InfoController infoController1 = new InfoController();
-        String url = "https://api.github.com/repos/z-pattern-matching/z";
+//        String url = "https://api.github.com/repos/z-pattern-matching/z";
+//        String url = "https://api.github.com/repos/ShiqiYu/libfacedetection";
+        String url = "https://api.github.com/repos/aimacode/aima-python";
+//        String url = "https://api.github.com/repos/github/training-kit";
         infoController1.addInfos(url);
 //        getInfo getInfo = new getInfo();
 //        List<issueAnalyse> z = getInfo.gerIssuesAnalysis(1);

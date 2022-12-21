@@ -38,7 +38,7 @@ public class getInfoServiceImpl implements GetInfoService {
 
     @Override
     public List<developers> getDevelopers(int id) {
-        return getInfoMapper.gerDevelopers(id);
+        return getInfoMapper.getDevelopers(id);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class getInfoServiceImpl implements GetInfoService {
 
     @Override
     public List<issueAnalyse> getIssuesAnalysis(int id) {
-        return getInfoMapper.gerIssuesAnalysis(id);
+        return getInfoMapper.getIssuesAnalysis(id);
     }
 
     @Override

@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 @RequestMapping("/add")
 public class InfoController {
     
-    final String token = "";
+    final String token = "token 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";
 
     @SneakyThrows
     @PostMapping("/crawler")
@@ -101,21 +101,25 @@ public class InfoController {
             q += 1;
         }
 
-        String urlDeveloper = urls + "/contributors";
-        request = HttpRequest.newBuilder()
-                .GET()
-                .uri(URI.create(urlDeveloper))
-                .setHeader("Authorization", token)
-                .build();
-        response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        t = response.body().substring(1, response.body().length() - 1);
-        t = "[" + t + "]";
-        jsonArray = JSONArray.parseArray(t);
-        for (int i = 0; i < jsonArray.size(); i++) {
-            jsonObject = jsonArray.getJSONObject(i);
-            addInfo.addDevelopers(jsonObject.getString("login"), Integer.parseInt(jsonObject.getString("contributions")), jsonObject.getString("avatar_url"),jsonObject.getString("html_url"),repo_Id);
+        q = 1;
+        while (true) {
+            String urlDeveloper = urls + "/contributors?page=" + q + "&per_page=100";
+            request = HttpRequest.newBuilder()
+                    .GET()
+                    .uri(URI.create(urlDeveloper))
+                    .setHeader("Authorization", token)
+                    .build();
+            response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            t = response.body().substring(1, response.body().length() - 1);
+            if (t.equals("")) break;
+            t = "[" + t + "]";
+            jsonArray = JSONArray.parseArray(t);
+            for (int i = 0; i < jsonArray.size(); i++) {
+                jsonObject = jsonArray.getJSONObject(i);
+                addInfo.addDevelopers(jsonObject.getString("login"), Integer.parseInt(jsonObject.getString("contributions")), jsonObject.getString("avatar_url"), jsonObject.getString("html_url"), repo_Id);
+            }
+            q += 1;
         }
-
         q = 1;
         while (true) {
             String urlRelease = urls + "/releases?page=" + q + "&per_page=100";
