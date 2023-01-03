@@ -1,12 +1,14 @@
 package com.example.springproject.service;
+
 import com.example.springproject.Mapper.AddInfoMapper;
+import java.sql.Timestamp;
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.sql.Timestamp;
+
 @Service
-public class addInfoImpl implements AddInfo{
+public class addInfoImpl implements AddInfo {
     private static AddInfoMapper addInfoMapper;
     @Autowired
     private AddInfoMapper addInfoMapper2;

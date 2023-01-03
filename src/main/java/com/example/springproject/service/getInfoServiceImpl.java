@@ -3,12 +3,12 @@ package com.example.springproject.service;
 import com.example.springproject.Mapper.AddInfoMapper;
 import com.example.springproject.Mapper.GetInfoMapper;
 import com.example.springproject.domain.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
 @Service
 public class getInfoServiceImpl implements GetInfoService {
 
@@ -17,7 +17,7 @@ public class getInfoServiceImpl implements GetInfoService {
     private GetInfoMapper getInfoMapper2;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         getInfoMapper = getInfoMapper2;
     }
     @Override

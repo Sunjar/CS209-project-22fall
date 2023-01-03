@@ -1,9 +1,10 @@
 package com.example.springproject.Mapper;
 
 import com.example.springproject.domain.*;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import java.util.List;
+
 
 @Mapper
 public interface GetInfoMapper {
@@ -38,11 +39,11 @@ public interface GetInfoMapper {
     public List<Integer> getCommitByRelease(int id);
 
     @Select("select count(id) from commit where date_part('hour',commit_time)>=#{time} and date_part('hour',commit_time)<(#{time}+6) and repo_id = #{id};")
-    public int getCommitByHourRelease(int id,int time);
+    public int getCommitByHourRelease(int id, int time);
 
-    @Select("select to_char(commit_time::DATE, 'YYYY-MM-DD') as data, count(id) as commitNum\n" +
-            "from commit\n" +
-            "where repo_id = #{id}  group by data order by data")
+    @Select("select to_char(commit_time::DATE, 'YYYY-MM-DD') as data, count(id) as commitNum\n"
+            + "from commit\n"
+            + "where repo_id = #{id}  group by data order by data")
     public List<commitByDay> getCommitByDay(int id);
 
     @Select("SELECT * FROM issues where position((select name from repos where id = #{{id}) in title)!=0 and repo_id = #{id};")

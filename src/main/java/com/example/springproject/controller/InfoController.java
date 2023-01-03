@@ -5,10 +5,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.springproject.service.AddInfo;
 import com.example.springproject.service.addInfoImpl;
-import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -16,6 +12,11 @@ import java.net.http.HttpResponse;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import lombok.SneakyThrows;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+
 @RestController
 @CrossOrigin
 @RequestMapping("/add")
@@ -146,8 +147,8 @@ public class InfoController {
                     release_time = null;
                 }
                 Timestamp nextRelease;
-                if (i!=0){
-                    jsonObject =  jsonArray.getJSONObject(i-1);
+                if (i != 0){
+                    jsonObject = jsonArray.getJSONObject(i-1);
                     z = jsonObject.getString("published_at");
                     if (z != null) {
                         z = z.replace("T", "");

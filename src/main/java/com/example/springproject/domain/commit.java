@@ -1,13 +1,13 @@
 package com.example.springproject.domain;
 
-
+import java.sql.Timestamp;
+import java.time.format.DateTimeFormatter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
-import java.time.format.DateTimeFormatter;
+
 @Data
 @Builder
 @NoArgsConstructor
