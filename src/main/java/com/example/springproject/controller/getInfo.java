@@ -1,12 +1,12 @@
 package com.example.springproject.controller;
+
 import com.example.springproject.domain.*;
 import com.example.springproject.service.GetInfoService;
 import com.example.springproject.service.getInfoServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.constraints.*;
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/repo")
